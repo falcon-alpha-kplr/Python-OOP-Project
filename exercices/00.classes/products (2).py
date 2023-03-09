@@ -30,7 +30,7 @@ class Chaise(Product):
         super().__init__(cost,price,marque)
         self.matériaux = matériaux
         self.couleur = couleur
-        self.dimensions = dimensions"""
+        self.dimensions = dimensions
 
 
 class Table(Product):
@@ -38,8 +38,14 @@ class Table(Product):
         super().__init__(cost,price,marque)
         self.matériaux = matériaux
         self.couleur = couleur
-        self.dimensions = dimensions
+        self.dimensions = dimensions"""
 
+class Meubles(Product):
+    def __init__(self,cost,price,marque,matériaux,couleur,dimensions):
+        super().__init__(cost,price,marque)
+        self.matériaux = matériaux
+        self.couleur = couleur
+        self.dimensions = dimensions
 
 # On peut aussi définir les classes Canape, Chaise et Table comme sous-classe de Meubles : 
 # (en rajoutant d'autres arguments spécifiques)
@@ -73,4 +79,5 @@ chaise2 = Chaise(75, 100, "PEPOUSE", "Métal", "Gris", "60x60x80", "Chaise")
 table1 = Table(350, 700, "TEX", "Verre", "Transparent", "120x60x75")
 
 print("\n=====")
-print(canape1.cost,canape1.marque,canape1.price)
+print(canape1.cost,canape1.marque,canape1.price,canape1.dimensions)
+
