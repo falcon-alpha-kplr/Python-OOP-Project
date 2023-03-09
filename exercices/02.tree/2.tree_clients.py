@@ -44,4 +44,3 @@ create_tree_from_dict(my_tree, "racine", json_dict)
 
 # Afficher l'arbre
 my_tree.show()
-
