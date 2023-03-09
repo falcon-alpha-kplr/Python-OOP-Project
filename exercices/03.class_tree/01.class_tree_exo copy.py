@@ -44,7 +44,7 @@ def json_dict_from_file():
 
     return json_dict
 
-
+##############################################################################################################
 # Fonction pour créer un arbre à partir d'un dictionnaire Python
 def create_tree_from_dict(json_dict):
    # Créer un nouvel arbre
@@ -57,7 +57,7 @@ def create_tree_from_dict(json_dict):
     tree_ctfd = recursive_tree_from_json(tree_ctfd, json_dict, parent_node_id)
    # Retourner l'arbre
     return tree_ctfd
-
+##############################################################################################################
 '''def create_tree_from_dict(tree, parent_node_id, parent_dict):'''
 """
     Cette fonction crée un arbre à partir d'un dictionnaire.
@@ -82,7 +82,7 @@ def create_tree_from_dict(json_dict):
             #leaf_node_id = f"{parent_node_id}.{key}"
             #tree.create_node(tag=f"{key}: {value}", identifier=leaf_node_id, parent=parent_node_id)
 """
-
+###########################################################################################################
 # Fonction récursive pour parcourir un dictionnaire Python et créer des noeuds dans un arbre
 def recursive_tree_from_json(tree_rtfj, json_dict, parent_node_id):
         for key, value in json_dict.items():
@@ -93,7 +93,7 @@ def recursive_tree_from_json(tree_rtfj, json_dict, parent_node_id):
                 # Créer récursivement le sous-arbre pour le dictionnaire courant
                 tree_rtfj = recursive_tree_from_json(tree_rtfj, value, new_node_id)
         return tree_rtfj
-
+############################################################################################################
    # Pour chaque clé (class_name) et valeur (class_attrs) dans le dictionnaire :
     #    Créer un nouveau noeud pour la clé courante du dictionnaire (nom de la classe)
      #   Ajouter le nouveau noeud en tant que fils du noeud parent
@@ -101,6 +101,7 @@ def recursive_tree_from_json(tree_rtfj, json_dict, parent_node_id):
       #  Si "subclasses" est dans les attributs de la classe en cours (soit : valeur(class_attrs))
        #     Appeler récursivement la fonction pour créer les sous-noeuds de ce dictionnaire
 
+############################################################################################################
 # Fonction principale
 def main():
     #Charger les données JSON depuis un fichier et créer la structure de l'arbre à partir du dictionnaire
@@ -114,7 +115,7 @@ def main():
 if __name__ == '__main__':
     # Appeler la fonction principale
     main()
-
+#############################################################################################################
 
 '''
 
