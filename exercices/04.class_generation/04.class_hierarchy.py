@@ -2,6 +2,7 @@
 import json
 from unidecode import unidecode
 import re
+import os
 
 # Charger des données JSON à partir du fichier dans un dictionnaire python
 local_path = os.path.dirname(os.path.abspath(__file__))
