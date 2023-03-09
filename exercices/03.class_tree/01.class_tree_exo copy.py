@@ -82,18 +82,19 @@ def create_tree_from_dict(json_dict):
             #leaf_node_id = f"{parent_node_id}.{key}"
             #tree.create_node(tag=f"{key}: {value}", identifier=leaf_node_id, parent=parent_node_id)
 """
-###########################################################################################################
+###########################################################################################################   
+#'''Si la value est un sous-dictionnaire'''
 # Fonction récursive pour parcourir un dictionnaire Python et créer des noeuds dans un arbre
 def recursive_tree_from_json(tree_rtfj, json_dict, parent_node_id):
         for key, value in json_dict.items():  
-            if isinstance(value, dict):                       '''Si la value est un sous-dictionnaire'''
-                if key!="subclasses": #Ajout de condition if  '''Si la clé ne se nomme pas subclasses'''
-                    new_node_id = f"{parent_node_id}.{key}"   '''Nom d'identification du nouveau noeud : Nom d'id du noeud parent.Nom Clé '''
-                    tree_rtfj.create_node(tag=key, identifier=new_node_id, parent=parent_node_id)  '''Création du nouveau noeud à partir du noeud d'id parent_node_id'''
+            if isinstance(value, dict):                       #Ajout de condition if :  
+                if key!="subclasses":                         #Si la clé ne se nomme pas subclasses.  
+                    new_node_id = f"{parent_node_id}.{key}"   #Nom d'identification du nouveau noeud : Nom d'id du noeud parent.Nom Clé 
+                    tree_rtfj.create_node(tag=key, identifier=new_node_id, parent=parent_node_id)  #Création du nouveau noeud à partir du noeud d'id parent_node_id
                 else:                 #Ajout de condition else
-                     new_node_id = parent_node_id              '''Si une clé-dictionaire se nomme subclasses, alors on veut pas la créer en tant que noeud, mais créer ses sous clés-dictionnaires 
-                                                                  comme noeuds, donc veut que le new_node_id reste nommé comme parent_node_id pour ensuite créer les noeuds directement à partir du
-                                                                   noeud parent de subclasses lors de l'appel de l'instruction suivante de la fonction récursive. '''            
+                     new_node_id = parent_node_id              #Si une clé-dictionaire se nomme subclasses, alors on veut pas la créer en tant que noeud, mais créer ses sous clés-dictionnaires 
+                                                                 # comme noeuds, donc veut que le new_node_id reste nommé comme parent_node_id pour ensuite créer les noeuds directement à partir du
+                                                                   #noeud parent de subclasses lors de l'appel de l'instruction suivante de la fonction récursive.           
                 # Créer récursivement le sous-arbre pour le dictionnaire courant
                 tree_rtfj = recursive_tree_from_json(tree_rtfj, value, new_node_id) 
         return tree_rtfj
