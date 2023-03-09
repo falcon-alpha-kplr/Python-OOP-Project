@@ -51,7 +51,7 @@ def create_tree_from_dict(json_dict):
 
     tree_ctfd = Tree()
    # Créer le noeud racine pour l'arbre
-    tree_ctfd.create_node(tag="Racine", identifier="racine")
+    tree_ctfd.create_node(tag="Product Classes Hierarchy", identifier="racine")
     parent_node_id = "racine"
     # Parcourir récursivement le dictionnaire Python pour créer les noeuds de l'arbre (fonction ci dessous)
     tree_ctfd = recursive_tree_from_json(tree_ctfd, json_dict, parent_node_id)
