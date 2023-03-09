@@ -87,8 +87,11 @@ def create_tree_from_dict(json_dict):
 def recursive_tree_from_json(tree_rtfj, json_dict, parent_node_id):
         for key, value in json_dict.items():
             if isinstance(value, dict):
-                new_node_id = f"{parent_node_id}.{key}"
-                tree_rtfj.create_node(tag=key, identifier=new_node_id, parent=parent_node_id)
+                if key!="subclasses": #Ajout de condition if
+                    new_node_id = f"{parent_node_id}.{key}"
+                    tree_rtfj.create_node(tag=key, identifier=new_node_id, parent=parent_node_id)
+                else:                 #Ajout de condition else
+                     new_node_id = parent_node_id                
             
                 # Créer récursivement le sous-arbre pour le dictionnaire courant
                 tree_rtfj = recursive_tree_from_json(tree_rtfj, value, new_node_id)
