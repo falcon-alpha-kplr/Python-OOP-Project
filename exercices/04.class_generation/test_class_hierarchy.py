@@ -17,7 +17,7 @@ json_data = (unidecode(json_str))
 # Conversion de la chaine de caractere JSON à nouveau en dictionnaire Python
 # Le dictionnaire python est plus pratique à manipuler que la chaine de caractère car il est structuré
 json_dict = json.loads(json_data)
-
+#json_dict.items()
 """
 La méthode generate_class_hierarchy permet de générer une hiérarchie des classes en utilisant un dictionnaire comme entrée.
 Elle prend les arguments suivant: 
@@ -33,12 +33,14 @@ def generate_class_hierarchy(json_dict :dict, superclass_name:str=None,superclas
     Itération sur les éléments du dictionnaire
     pour chaque nom de classe (class_name) et attribut de cette dernière (class_attrs) dans les éléments de  json_dict, faire:"""
     for class_name, class_attrs in json_dict.items():
-        class_def = generate_class_def(class_name, class_attrs, superclass_name, superclass_args)
+        class_def = generate_class_def(class_name, class_attrs, superclass_name, superclass_args)        # Code génératif de l'arborescence sans attributs de classes.
         class_defs.append(class_def)
-        if class_attrs=="subclasses":
+        if class_attrs=="subclasses": #class_name=="subclasses" ?
              super_attr = superclass_args.append(class_attrs)
              super_attr.remove("subclasses")
-             
+             subclass_def = generate_class_hierarchy(json_dict, superclass_name=class_name, superclass_args=super_attr)
+             class_defs.append(class_def)
+    return class_defs
 
 
        # - Générer la définition de la classe avec la méthode generate_class_def() en passant les arguments superclass_name et superclass_args comme entrées
